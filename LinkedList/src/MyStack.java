@@ -58,6 +58,18 @@ public class MyStack {
 		}
 		System.out.println("");
 	}
+	
+	public Stack sort(Stack s){
+		Stack s2 = new Stack();
+		while(!s.isEmpty()){
+			int temp = (int) s.pop();
+			while(!s2.isEmpty() && (int)s2.peek() > temp){
+				s.push(s2.pop());
+			}
+			s2.push(temp);
+		}
+		return s2;
+	}
 
 	
 }

@@ -102,11 +102,22 @@ public class MyLinkedList {
 		}	
 	}
 	
+	public boolean removeMiddleNode(Node n){
+		if(n == null || n.next == null){
+			return false;
+		}
+		
+		Node nextNode = n.next;
+		n.data = n.next.data;
+		n.next = nextNode.next;
+		return true;
+	}
+	
 	public boolean hasLoop(){
 		boolean looped = false;
 		Node A = head;
-		Node B = head.next;
-		while(B.next!=null && looped == false){
+		Node B = head;
+		while(B.next!=null && B != null ^ looped == false){
 			A = A.next;
 			B = B.next.next;
 			if(A.equals(B)){
@@ -115,6 +126,26 @@ public class MyLinkedList {
 			}
 		}
 		return looped;
+	}
+	
+	public int findLoopHead(){
+		Node a = head;
+		Node b = head;
+		while(b.next != null && b != null){
+			a = a.next;
+			b = b.next.next;
+			if(a.equals(b)){
+				break;
+			}
+		}
+		a = head;
+		System.out.println("a is now: " + a.data);
+
+		while(a!=b){
+			a = a.next;
+			b = b.next;
+		}
+		return a.data;	
 	}
 	
 	public MyLinkedList removeDuplicate(){

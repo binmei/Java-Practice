@@ -34,6 +34,8 @@ public class MyLinkedListTester {
 		System.out.println("The list is now looped: ");
 		myList.printLoopList();
 		myList.hasLoop();
+		System.out.println("The head of the loop is: ");
+		System.out.println(myList.findLoopHead());
 		System.out.println("Breaking the loop.");
 		n10.next = null;
 		myList.printList();
